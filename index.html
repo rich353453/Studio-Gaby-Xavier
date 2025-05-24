@@ -6,364 +6,261 @@
     <title>Studio Gaby Xavier - Design de Sobrancelhas</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <nav class="navbar">
             <div class="logo">
-                <div class="logo-image">
-                    <i class="fas fa-spa" style="color: white; font-size: 1.5rem;"></i>
+                <div class="logo-container">
+                    <div class="logo-symbol">
+                        <span>GX</span>
+                    </div>
                 </div>
-                <h1 class="logo-text">Studio Gaby Xavier</h1>
+                <div class="logo-text">Studio Gaby Xavier</div>
             </div>
             <div class="nav-links">
                 <a href="#" class="active">Home</a>
-                <a href="#services">Serviços</a>
-                <a href="#about">Sobre</a>
-                <a href="#contact">Contato</a>
-                <a href="#" data-booking>Agendar</a>
-            </div>
-            <div class="nav-icons">
-                <a href="#" class="booking-icon" data-booking><i class="fas fa-calendar-alt"></i></a>
-                <a href="tel:+5511973119019" class="phone-icon"><i class="fas fa-phone"></i></a>
+                <a href="#servicos">Serviços</a>
+                <a href="#sobre">Sobre</a>
+                <a href="#contato">Contato</a>
+                <a href="#" class="cta-button" data-booking>Agendar</a>
             </div>
         </nav>
     </header>
 
-    <section class="hero">
-        <div class="hero-content">
-            <div class="hero-text">
-                <h1 class="main-title">Studio Gaby Xavier</h1>
-                <h2 class="subtitle">Design de Sobrancelhas</h2>
-                <p class="hero-description">Realce sua beleza natural com técnicas exclusivas e atendimento personalizado</p>
-                <div class="hero-buttons">
-                    <a href="#" class="cta-button primary" data-booking>
-                        <i class="fas fa-calendar-alt"></i>
-                        Agende seu Horário
-                    </a>
-                    <a href="#services" class="cta-button secondary">
-                        <i class="fas fa-spa"></i>
-                        Conheça os Serviços
-                    </a>
-                </div>
-            </div>
-            <div class="hero-features">
-                <div class="feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <div class="feature-text">
-                        <strong>Especialista em Design</strong>
-                        <span>Técnica Exclusiva</span>
-                    </div>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-clock"></i>
-                    </div>
-                    <div class="feature-text">
-                        <strong>Atendimento Flexível</strong>
-                        <span>Horários Convenientes</span>
-                    </div>
-                </div>
-                <div class="feature">
-                    <div class="feature-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <div class="feature-text">
-                        <strong>Experiência Única</strong>
-                        <span>Cuidado Personalizado</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="video-showcase">
-        <div class="video-wrapper">
-            <blockquote class="pinterest-video" data-pin-width="large">
-                <a href="https://br.pinterest.com/pin/949555902665409614/">
-                    <img src="path-to-thumbnail.jpg" alt="Tutorial de Design de Sobrancelhas">
-                </a>
-            </blockquote>
-            <div class="video-overlay">
-                <div class="video-content">
-                    <h2>Aprenda Técnicas Profissionais</h2>
-                    <p>Descubra os segredos para criar sobrancelhas perfeitas com nossas técnicas avançadas de design.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="features">
-        <div class="features-grid">
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" class="icon-premium">
-                        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-                    </svg>
-                </div>
-                <h3>Design Premium</h3>
-                <p>Técnicas exclusivas para harmonizar seu rosto</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" class="icon-clock">
-                        <path d="M12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20ZM12.5 7V12.25L17 14.92L16.25 16.15L11 13V7H12.5Z" />
-                    </svg>
-                </div>
-                <h3>Atendimento Rápido</h3>
-                <p>Horários flexíveis para sua conveniência</p>
-            </div>
-            <div class="feature-card">
-                <div class="feature-icon">
-                    <svg viewBox="0 0 24 24" class="icon-heart">
-                        <path d="M12 21.35L10.55 20.03C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3C9.24 3 10.91 3.81 12 5.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5C22 12.27 18.6 15.36 13.45 20.03L12 21.35Z" />
-                    </svg>
-                </div>
-                <h3>Experiência Única</h3>
-                <p>Ambiente acolhedor e profissional dedicada</p>
-            </div>
-        </div>
-    </section>
-
-    <section class="services-preview">
-        <div class="services-grid">
-            <div class="service-image">
-                <img src="https://images.pexels.com/photos/3764367/pexels-photo-3764367.jpeg" alt="Design de Sobrancelhas">
-            </div>
-            <div class="service-info">
-                <h2>Serviços Exclusivos</h2>
-                <div class="service-list">
-                    <div class="service-item">
-                        <i class="fas fa-check"></i>
-                        <div class="service-text">
-                            <h4>Design de Sobrancelhas</h4>
-                            <p>Técnica personalizada para realçar sua beleza natural</p>
-                            <span class="price">A partir de R$50</span>
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="subtitle">STUDIO GABY XAVIER</span>
+                    <h1 class="main-title">Desperte a beleza que existe em você</h1>
+                    <p class="hero-description">Tratamentos exclusivos e personalizados para realçar sua beleza natural. Design de sobrancelhas, peeling e massagem rejuvenescedora com a excelência que você merece.</p>
+                    
+                    <div class="hero-cta">
+                        <a href="#" class="cta-button primary" data-booking>AGENDAR HORÁRIO</a>
+                        <div class="event-info">
+                            <i class="far fa-clock"></i>
+                            <span>ATENDIMENTO DE SEGUNDA A SÁBADO</span>
+                            <div class="event-tag">DAS 9H ÀS 19H</div>
                         </div>
                     </div>
-                    <div class="service-item">
-                        <i class="fas fa-check"></i>
-                        <div class="service-text">
-                            <h4>Micropigmentação</h4>
-                            <p>Sobrancelhas perfeitas que duram mais tempo</p>
-                            <span class="price">A partir de R$250</span>
+
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number">Design de<br>Sobrancelhas</div>
+                            <div class="stat-label">Técnica<br>Profissional</div>
                         </div>
-                    </div>
-                    <div class="service-item">
-                        <i class="fas fa-check"></i>
-                        <div class="service-text">
-                            <h4>Design com Henna</h4>
-                            <p>Coloração natural para maior definição</p>
-                            <span class="price">A partir de R$80</span>
+                        <div class="stat-item">
+                            <div class="stat-number">Peeling<br>Facial</div>
+                            <div class="stat-label">Tratamento<br>Especializado</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">Massagem<br>Facial</div>
+                            <div class="stat-label">Tratamento<br>Rejuvenescedor</div>
                         </div>
                     </div>
                 </div>
-                <a href="#" class="cta-button secondary" data-booking>Agende seu Horário</a>
+                <div class="hero-image">
+                    <img src="sombracelha 1.jpg" alt="Design de Sobrancelhas Profissional">
+                    <div class="hero-shape"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="cronograma" class="servicos">
+            <div class="servicos-header">
+                <span class="subtitle">NOSSOS SERVIÇOS</span>
+                <h2>Tratamentos Especializados</h2>
+            </div>
+            <div class="servicos-grid">
+                <div class="servico-card">
+                    <div class="card-image">
+                        <img src="sombracelha 1.jpg" alt="Design de Sobrancelhas">
+                        <span class="card-tag">DESIGN</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-status">
+                            <span class="status-tag">A partir de R$ 50</span>
+                            <div class="card-duration">
+                                <i class="far fa-clock"></i>
+                                <span>Duração: 40min</span>
+                            </div>
+                        </div>
+                        <h3 class="card-title">Design de Sobrancelhas</h3>
+                        <p class="card-description">Design personalizado que valoriza seu olhar e harmoniza com seu rosto. Técnica exclusiva que garante um resultado natural e duradouro.</p>
+                        <a href="#" class="card-button" data-booking data-service="design">Agendar Agora</a>
+                    </div>
+                </div>
+
+                <div class="servico-card">
+                    <div class="card-image">
+                        <img src="peeling.jpg" alt="Peeling Facial">
+                        <span class="card-tag">TRATAMENTO</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-status">
+                            <span class="status-tag">A partir de R$ 80</span>
+                            <div class="card-duration">
+                                <i class="far fa-clock"></i>
+                                <span>Duração: 50min</span>
+                            </div>
+                        </div>
+                        <h3 class="card-title">Peeling Facial</h3>
+                        <p class="card-description">Renovação celular que deixa sua pele mais jovem, luminosa e livre de manchas. Tratamento personalizado para seu tipo de pele.</p>
+                        <a href="#" class="card-button" data-booking data-service="peeling">Agendar Agora</a>
+                    </div>
+                </div>
+
+                <div class="servico-card">
+                    <div class="card-image">
+                        <img src="masagem.jpg" alt="Massagem Rejuvenescedora">
+                        <span class="card-tag">RELAXAMENTO</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-status">
+                            <span class="status-tag">A partir de R$ 100</span>
+                            <div class="card-duration">
+                                <i class="far fa-clock"></i>
+                                <span>Duração: 60min</span>
+                            </div>
+                        </div>
+                        <h3 class="card-title">Massagem Rejuvenescedora</h3>
+                        <p class="card-description">Massagem facial que combate sinais de envelhecimento, reduz o estresse e promove o relaxamento profundo da musculatura.</p>
+                        <a href="#" class="card-button" data-booking data-service="massagem">Agendar Agora</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title">Agende seu horário agora!</h2>
+                <p class="cta-description">Transforme seu visual com nossos tratamentos exclusivos</p>
+                <a href="#" class="cta-button" data-booking>AGENDAR HORÁRIO</a>
+                <p style="color: white; margin-top: 1rem; font-size: 0.9rem;">
+                    ATENDIMENTO DE SEGUNDA A SÁBADO | DAS 9H ÀS 19H
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <section id="sobre" class="sobre">
+        <div class="sobre-content">
+            <div class="sobre-text">
+                <h2>Sobre Gaby Xavier</h2>
+                <p class="destaque">Profissional especializada em design de sobrancelhas e estética facial</p>
+                <p>Com mais de 8 anos dedicados à arte da beleza, construí uma trajetória baseada na excelência e no cuidado personalizado. Cada cliente que passa pelo Studio recebe um atendimento único, pensado especialmente para valorizar sua beleza natural.</p>
+                <p>Minha missão é proporcionar não apenas um serviço, mas uma experiência transformadora. Através de técnicas avançadas e produtos de alta qualidade, garanto resultados que elevam a autoestima e realçam a beleza única de cada pessoa.</p>
+                <div class="certificacoes">
+                    <h3>Especializações</h3>
+                    <ul>
+                        <li><i class="fas fa-certificate"></i> Design de Sobrancelhas Avançado</li>
+                        <li><i class="fas fa-certificate"></i> Peeling Facial</li>
+                        <li><i class="fas fa-certificate"></i> Massagem Rejuvenescedora</li>
+                        <li><i class="fas fa-certificate"></i> Limpeza de Pele</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="sobre-image">
+                <img src="sombracelha 1.jpg" alt="Gaby Xavier em ação">
             </div>
         </div>
     </section>
 
-    <section id="services" class="featured-services">
-        <h2>Meus Serviços</h2>
-        <div class="service-grid">
-            <div class="service-card">
-                <div class="service-image">
-                    <img src="https://images.pexels.com/photos/3764367/pexels-photo-3764367.jpeg" alt="Design de Sobrancelhas">
-                    <div class="service-overlay">
-                        <a href="#" class="book-now" data-booking data-service="design">Agendar</a>
-                    </div>
-                </div>
-                <div class="service-info">
-                    <h3>Design de Sobrancelhas</h3>
-                    <p class="description">Design personalizado para harmonizar seu rosto</p>
-                    <p class="price">A partir de R$50</p>
-                    <div class="service-features">
-                        <span><i class="fas fa-clock"></i> 40 min</span>
-                        <span><i class="fas fa-star"></i> 4.9</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-image">
-                    <img src="https://images.pexels.com/photos/3738340/pexels-photo-3738340.jpeg" alt="Micropigmentação">
-                    <div class="service-overlay">
-                        <a href="#" class="book-now" data-booking data-service="micropigmentacao">Agendar</a>
-                    </div>
-                </div>
-                <div class="service-info">
-                    <h3>Micropigmentação</h3>
-                    <p class="description">Técnica moderna para sobrancelhas perfeitas</p>
-                    <p class="price">A partir de R$250</p>
-                    <div class="service-features">
-                        <span><i class="fas fa-clock"></i> 90 min</span>
-                        <span><i class="fas fa-star"></i> 5.0</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="service-card">
-                <div class="service-image">
-                    <img src="https://images.pexels.com/photos/3764636/pexels-photo-3764636.jpeg" alt="Design com Henna">
-                    <div class="service-overlay">
-                        <a href="#" class="book-now" data-booking data-service="henna">Agendar</a>
-                    </div>
-                </div>
-                <div class="service-info">
-                    <h3>Design com Henna</h3>
-                    <p class="description">Coloração natural e definição</p>
-                    <p class="price">A partir de R$80</p>
-                    <div class="service-features">
-                        <span><i class="fas fa-clock"></i> 60 min</span>
-                        <span><i class="fas fa-star"></i> 4.8</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="about">
-        <h2>Por Que Nos Escolher</h2>
-        <div class="features-grid">
-            <div class="feature-card">
-                <i class="fas fa-certificate"></i>
-                <h3>Profissional Especializada</h3>
-                <p>Gaby Xavier, especialista com anos de experiência</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-spa"></i>
-                <h3>Ambiente Acolhedor</h3>
-                <p>Espaço pensado para seu conforto e bem-estar</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-heart"></i>
-                <h3>Atendimento Personalizado</h3>
-                <p>Tratamentos adaptados à sua beleza única</p>
-            </div>
-            <div class="feature-card">
-                <i class="fas fa-gem"></i>
-                <h3>Produtos Premium</h3>
-                <p>Utilizo as melhores marcas do mercado</p>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact">
-        <div class="contact-content">
+    <section id="contato" class="contato">
+        <div class="contato-content">
             <h2>Entre em Contato</h2>
-            <p>Tire suas dúvidas ou agende seu horário</p>
-            <form class="contact-form">
-                <input type="text" placeholder="Seu Nome" required>
-                <input type="email" placeholder="Seu Email" required>
-                <input type="tel" placeholder="Seu Telefone" required>
-                <textarea placeholder="Sua Mensagem" required></textarea>
-                <button type="submit">Enviar Mensagem</button>
-            </form>
-        </div>
-    </section>
-
-    <!-- Modal de Agendamento -->
-    <div class="booking-modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
+            <p>Estamos aqui para tirar suas dúvidas e agendar seu horário</p>
             
-            <div class="calendar-section">
-                <div class="calendar-header">
-                    <h2 class="calendar-title">Agende seu Horário</h2>
-                    <div class="calendar-nav">
-                        <button class="prev-month" aria-label="Mês anterior">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <span class="current-month">Março 2024</span>
-                        <button class="next-month" aria-label="Próximo mês">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
+            <div class="contato-grid">
+                <div class="contato-info">
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h3>Localização</h3>
+                            <p>Mairiporã - SP</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <h3>Telefone</h3>
+                            <p>(11) 97311-9019</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h3>E-mail</h3>
+                            <p>contato@studiogabyxavier.com</p>
+                        </div>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3>Horário de Funcionamento</h3>
+                            <p>Segunda a Sábado: 9h às 19h</p>
+                        </div>
                     </div>
                 </div>
-                <div class="weekday-headers">
-                    <div class="weekday-header">Dom</div>
-                    <div class="weekday-header">Seg</div>
-                    <div class="weekday-header">Ter</div>
-                    <div class="weekday-header">Qua</div>
-                    <div class="weekday-header">Qui</div>
-                    <div class="weekday-header">Sex</div>
-                    <div class="weekday-header">Sáb</div>
-                </div>
-                <div class="calendar-grid">
-                    <!-- Os dias serão inseridos via JavaScript -->
-                </div>
-            </div>
-
-            <div class="time-section">
-                <h3>Horários Disponíveis</h3>
-                <div class="time-slots">
-                    <!-- Os horários serão inseridos via JavaScript -->
-                </div>
-            </div>
-
-            <div class="booking-form">
-                <button type="button" class="back-to-calendar">
-                    <i class="fas fa-arrow-left"></i> Voltar
-                </button>
-                <h2>Complete seu Agendamento</h2>
-                <form id="appointmentForm">
-                    <input type="text" name="name" placeholder="Seu Nome" required>
-                    <input type="tel" name="phone" placeholder="Seu Telefone" required>
-                    <input type="email" name="email" placeholder="Seu Email" required>
-                    <select name="service" required>
-                        <option value="">Selecione o Serviço</option>
-                        <option value="Design de Sobrancelhas">Design de Sobrancelhas</option>
-                        <option value="Micropigmentação">Micropigmentação</option>
-                        <option value="Design com Henna">Design com Henna</option>
-                    </select>
-                    <textarea name="notes" placeholder="Observações (opcional)"></textarea>
-                    <button type="submit" class="submit-button">
-                        <i class="fab fa-whatsapp"></i>
-                        Confirmar via WhatsApp
-                    </button>
+                
+                <form class="contato-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Seu Nome" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Seu E-mail" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Seu Telefone" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Sua Mensagem" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Enviar Mensagem</button>
                 </form>
             </div>
         </div>
-    </div>
-
-    <!-- Botão do WhatsApp -->
-    <a href="https://wa.me/5511973119019" class="whatsapp-button" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    </section>
 
     <footer>
         <div class="footer-content">
-            <div class="footer-section">
-                <h3>Studio Gaby Xavier</h3>
-                <p>Seu espaço especializado em design de sobrancelhas. Venha descobrir como posso realçar sua beleza natural com técnicas exclusivas e atendimento personalizado.</p>
+            <div class="footer-info">
+                <div class="logo">
+                    <div class="logo-container">
+                        <div class="logo-symbol">
+                            <span>GX</span>
+                        </div>
+                    </div>
+                    <div class="logo-text">Studio Gaby Xavier</div>
+                </div>
+                <p>Transformando olhares e realçando a beleza natural de cada cliente com técnicas exclusivas e atendimento personalizado.</p>
             </div>
-            <div class="footer-section">
-                <h3>Horário de Atendimento</h3>
+            <div class="footer-links">
+                <h3>Links Rápidos</h3>
                 <ul>
-                    <li>Segunda - Sexta: 9h às 20h</li>
-                    <li>Sábado: 9h às 18h</li>
-                    <li>Domingo: Fechado</li>
+                    <li><a href="#sobre">Sobre</a></li>
+                    <li><a href="#cronograma">Cronograma</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                    <li><a href="#">Política de Privacidade</a></li>
                 </ul>
             </div>
-            <div class="footer-section">
-                <h3>Contato</h3>
-                <ul>
-                    <li><i class="fas fa-phone"></i> (11) 97311-9019</li>
-                    <li><i class="fas fa-envelope"></i> contato@studiogabyxavier.com</li>
-                    <li><i class="fas fa-phone"></i> (11) 99999-9999</li>
-                    <li><i class="fas fa-envelope"></i> contato@beautystudio.com</li>
-                    <li><i class="fas fa-map-marker-alt"></i> Rua da Beleza, 123 - São Paulo</li>
-                </ul>
-            </div>
-            <div class="footer-section">
+            <div class="footer-social">
                 <h3>Redes Sociais</h3>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <div class="footer-social-icons">
+                    <a href="#" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-facebook"></i>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="#" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -372,301 +269,83 @@
         </div>
     </footer>
 
-    <section class="testimonials">
-        <div class="testimonials-header">
-            <h2>O que Nossas Clientes Dizem</h2>
-            <p>Experiências reais de quem já transformou seu visual conosco</p>
-        </div>
-        <div class="testimonials-grid">
-            <div class="testimonial-card">
-                <div class="testimonial-image">
-                    <img src="https://images.pexels.com/photos/3764634/pexels-photo-3764634.jpeg" alt="Cliente Satisfeita">
-                </div>
-                <div class="testimonial-content">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
+    <script src="script.js"></script>
+
+    <!-- Modal de Agendamento -->
+    <div class="booking-modal">
+        <div class="modal-content">
+            <button class="close-modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2>Agende seu Horário</h2>
+            <p>Escolha a data e horário de sua preferência</p>
+
+            <div class="booking-steps">
+                <div class="calendar-container">
+                    <div class="calendar-header">
+                        <button class="prev-month">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <h3 class="calendar-title">Maio 2024</h3>
+                        <button class="next-month">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
                     </div>
-                    <p class="testimonial-text">"Atendimento impecável! A Gaby tem um olhar único para harmonização facial. Minhas sobrancelhas ficaram perfeitas!"</p>
-                    <div class="testimonial-author">
-                        <h4>Maria Silva</h4>
-                        <span>Design com Henna</span>
+                    <div class="weekdays">
+                        <div>Dom</div>
+                        <div>Seg</div>
+                        <div>Ter</div>
+                        <div>Qua</div>
+                        <div>Qui</div>
+                        <div>Sex</div>
+                        <div>Sáb</div>
                     </div>
+                    <div class="calendar-grid"></div>
                 </div>
+
+                <div class="time-slots"></div>
+
+                <form class="booking-form" action="https://formsubmit.co/richardsuportelukos@gmail.com" method="POST">
+                    <input type="hidden" name="_subject" value="Novo Agendamento - Studio Gaby Xavier">
+                    <input type="hidden" name="_template" value="table">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_autoresponse" value="Agendamento recebido! Em breve entraremos em contato para confirmar.">
+                    <input type="hidden" name="_next" value="https://api.whatsapp.com/send?phone=5511973119019">
+                    
+                    <h3>Complete seu Agendamento</h3>
+                    <div class="form-group">
+                        <label for="service">Serviço</label>
+                        <select name="service" id="service" required>
+                            <option value="">Selecione o serviço</option>
+                            <option value="Design de Sobrancelhas">Design de Sobrancelhas - R$ 50</option>
+                            <option value="Peeling Facial">Peeling Facial - R$ 80</option>
+                            <option value="Massagem Rejuvenescedora">Massagem Rejuvenescedora - R$ 100</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Nome Completo</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefone/WhatsApp</label>
+                        <input type="tel" id="phone" name="phone" placeholder="(11) 97311-9019" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="date">Data Selecionada</label>
+                        <input type="text" id="date" name="date" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <label for="time">Horário Selecionado</label>
+                        <input type="text" id="time" name="time" readonly required>
+                    </div>
+                    <div class="form-group">
+                        <label for="notes">Observações (opcional)</label>
+                        <textarea id="notes" name="notes"></textarea>
+                    </div>
+                    <button type="submit" class="submit-button">Confirmar Agendamento</button>
+                </form>
             </div>
-
-            <div class="testimonial-card">
-                <div class="testimonial-image">
-                    <img src="https://images.pexels.com/photos/3764584/pexels-photo-3764584.jpeg" alt="Cliente">
-                </div>
-                <div class="testimonial-content">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"A micropigmentação feita pela Gaby mudou minha vida! Acordo linda todos os dias e economizo muito tempo na maquiagem."</p>
-                    <div class="testimonial-author">
-                        <h4>Ana Santos</h4>
-                        <span>Micropigmentação</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="testimonial-card">
-                <div class="testimonial-image">
-                    <img src="https://images.pexels.com/photos/3764585/pexels-photo-3764585.jpeg" alt="Cliente">
-                </div>
-                <div class="testimonial-content">
-                    <div class="rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                    </div>
-                    <p class="testimonial-text">"Ambiente super acolhedor e a Gaby é muito atenciosa. O resultado superou minhas expectativas!"</p>
-                    <div class="testimonial-author">
-                        <h4>Julia Oliveira</h4>
-                        <span>Design de Sobrancelhas</span>
-                    </div>
-                </div>
-            </div>
         </div>
-    </section>
-
-    <!-- Seção de Instagram Feed -->
-    <section class="instagram-feed">
-        <div class="instagram-header">
-            <h2>Siga Nosso Instagram</h2>
-            <p>@studiogabyxavier</p>
-        </div>
-        <div class="instagram-grid">
-            <a href="#" class="instagram-item" target="_blank">
-                <img src="https://images.pexels.com/photos/3764367/pexels-photo-3764367.jpeg" alt="Design de Sobrancelhas">
-                <div class="instagram-overlay">
-                    <i class="fab fa-instagram"></i>
-                </div>
-            </a>
-            <a href="#" class="instagram-item" target="_blank">
-                <img src="https://images.pexels.com/photos/3738340/pexels-photo-3738340.jpeg" alt="Micropigmentação">
-                <div class="instagram-overlay">
-                    <i class="fab fa-instagram"></i>
-                </div>
-            </a>
-            <a href="#" class="instagram-item" target="_blank">
-                <img src="https://images.pexels.com/photos/3764636/pexels-photo-3764636.jpeg" alt="Design com Henna">
-                <div class="instagram-overlay">
-                    <i class="fab fa-instagram"></i>
-                </div>
-            </a>
-            <a href="#" class="instagram-item" target="_blank">
-                <img src="https://images.pexels.com/photos/3764634/pexels-photo-3764634.jpeg" alt="Resultado Final">
-                <div class="instagram-overlay">
-                    <i class="fab fa-instagram"></i>
-                </div>
-            </a>
-        </div>
-        <a href="#" class="instagram-follow-button" target="_blank">
-            <i class="fab fa-instagram"></i>
-            Seguir no Instagram
-        </a>
-    </section>
-
-    <!-- Pinterest Script -->
-    <script async defer src="//assets.pinterest.com/js/pinit.js"></script>
-
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Seleciona todos os elementos que devem abrir o modal
-        const bookingTriggers = document.querySelectorAll('[data-booking]');
-        const modal = document.querySelector('.booking-modal');
-        const closeModal = document.querySelector('.close-modal');
-        const backToCalendar = document.querySelector('.back-to-calendar');
-        const calendarSection = document.querySelector('.calendar-section');
-        const bookingForm = document.querySelector('.booking-form');
-
-        // Função para abrir o modal
-        function openModal() {
-            modal.style.display = 'flex';
-            setTimeout(() => {
-                modal.classList.add('active');
-                modal.querySelector('.modal-content').style.transform = 'scale(1)';
-                modal.querySelector('.modal-content').style.opacity = '1';
-            }, 10);
-        }
-
-        // Função para fechar o modal
-        function closeModalFunction() {
-            modal.classList.remove('active');
-            modal.querySelector('.modal-content').style.transform = 'scale(0.95)';
-            modal.querySelector('.modal-content').style.opacity = '0';
-            setTimeout(() => {
-                modal.style.display = 'none';
-                // Reset form view
-                calendarSection.style.display = 'block';
-                bookingForm.classList.remove('active');
-            }, 300);
-        }
-
-        // Adiciona evento de clique para todos os triggers
-        bookingTriggers.forEach(trigger => {
-            trigger.addEventListener('click', function(e) {
-                e.preventDefault();
-                openModal();
-            });
-        });
-
-        // Fecha o modal ao clicar no X
-        closeModal.addEventListener('click', closeModalFunction);
-
-        // Fecha o modal ao clicar fora dele
-        modal.addEventListener('click', function(e) {
-            if (e.target === modal) {
-                closeModalFunction();
-            }
-        });
-
-        // Volta para o calendário
-        if (backToCalendar) {
-            backToCalendar.addEventListener('click', function() {
-                bookingForm.classList.remove('active');
-                calendarSection.style.display = 'block';
-            });
-        }
-
-        // Simulação do calendário
-        const calendarGrid = document.querySelector('.calendar-grid');
-        const timeSlots = document.querySelector('.time-slots');
-        
-        // Gera o calendário
-        function generateCalendar() {
-            const today = new Date();
-            const daysInMonth = new Date(today.getFullYear(), today.getMonth() + 1, 0).getDate();
-            const firstDay = new Date(today.getFullYear(), today.getMonth(), 1).getDay();
-            
-            // Limpa o calendário
-            calendarGrid.innerHTML = '';
-            
-            // Adiciona os dias vazios no início
-            for (let i = 0; i < firstDay; i++) {
-                const emptyDay = document.createElement('div');
-                emptyDay.className = 'calendar-day disabled';
-                calendarGrid.appendChild(emptyDay);
-            }
-            
-            // Adiciona os dias do mês
-            for (let day = 1; day <= daysInMonth; day++) {
-                const dayElement = document.createElement('div');
-                dayElement.className = 'calendar-day';
-                dayElement.textContent = day;
-                
-                // Marca o dia atual
-                if (day === today.getDate()) {
-                    dayElement.classList.add('today');
-                }
-                
-                // Adiciona evento de clique
-                dayElement.addEventListener('click', function() {
-                    document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
-                    this.classList.add('selected');
-                    generateTimeSlots();
-                });
-                
-                calendarGrid.appendChild(dayElement);
-            }
-        }
-        
-        // Gera horários disponíveis
-        function generateTimeSlots() {
-            timeSlots.innerHTML = '';
-            const hours = ['09:00', '10:00', '11:00', '14:00', '15:00', '16:00', '17:00'];
-            
-            hours.forEach(hour => {
-                const slot = document.createElement('div');
-                slot.className = 'time-slot';
-                slot.textContent = hour;
-                
-                slot.addEventListener('click', function() {
-                    document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
-                    this.classList.add('selected');
-                    showBookingForm();
-                });
-                
-                timeSlots.appendChild(slot);
-            });
-        }
-        
-        // Mostra o formulário de agendamento
-        function showBookingForm() {
-            calendarSection.style.display = 'none';
-            bookingForm.style.display = 'flex';
-            setTimeout(() => {
-                bookingForm.classList.add('active');
-            }, 10);
-        }
-        
-        // Inicializa o calendário
-        if (calendarGrid) {
-            generateCalendar();
-        }
-
-        // Adiciona manipulador do formulário
-        const appointmentForm = document.querySelector('#appointmentForm');
-        
-        appointmentForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Coleta os dados do formulário
-            const name = this.querySelector('[name="name"]').value;
-            const phone = this.querySelector('[name="phone"]').value;
-            const email = this.querySelector('[name="email"]').value;
-            const service = this.querySelector('[name="service"]').value;
-            const notes = this.querySelector('[name="notes"]').value;
-            
-            // Pega a data e hora selecionadas
-            const selectedDay = document.querySelector('.calendar-day.selected');
-            const selectedTime = document.querySelector('.time-slot.selected');
-            
-            if (!selectedDay || !selectedTime) {
-                alert('Por favor, selecione uma data e horário.');
-                return;
-            }
-
-            // Formata a data selecionada
-            const day = selectedDay.textContent;
-            const month = currentDate.getMonth() + 1;
-            const year = currentDate.getFullYear();
-            const dateStr = `${day}/${month}/${year}`;
-            
-            // Monta a mensagem para o WhatsApp
-            const message = `*Novo Agendamento - Studio Gaby Xavier*
-📅 Data: ${dateStr}
-⏰ Horário: ${selectedTime.textContent}
-👤 Nome: ${name}
-📱 Telefone: ${phone}
-📧 Email: ${email}
-💇‍♀️ Serviço: ${service}
-📝 Observações: ${notes}`;
-
-            // Codifica a mensagem para URL
-            const encodedMessage = encodeURIComponent(message);
-            
-            // Monta o link do WhatsApp
-            const whatsappLink = `https://wa.me/5511973119019?text=${encodedMessage}`;
-            
-            // Fecha o modal
-            closeModalFunction();
-            
-            // Abre o WhatsApp em uma nova janela
-            window.open(whatsappLink, '_blank');
-        });
-    });
-    </script>
+    </div>
 </body>
 </html> 

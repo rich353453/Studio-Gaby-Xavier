@@ -106,6 +106,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (dayElement) {
             dayElement.classList.add('selected');
             selectedDate = selectedDay;
+            // Atualizar campo de data
+            const dateInput = document.querySelector('#date');
+            if (dateInput) {
+                dateInput.value = selectedDay.toLocaleDateString();
+            }
             renderTimeSlots();
         }
     }
@@ -135,6 +140,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
         element.classList.add('selected');
         selectedTime = time;
+        // Atualizar campo de horário
+        const timeInput = document.querySelector('#time');
+        if (timeInput) {
+            timeInput.value = time;
+        }
         if (bookingForm) {
             bookingForm.style.display = 'flex';
             bookingForm.classList.add('active');
@@ -242,24 +252,293 @@ document.addEventListener('DOMContentLoaded', function() {
             }
 
             const formData = new FormData(bookingForm);
+            const service = formData.get('service');
+            const name = formData.get('name');
+            const phone = formData.get('phone');
+            const notes = formData.get('notes');
+            
+            // Criar o objeto com os dados do agendamento
             const bookingData = {
-                ...Object.fromEntries(formData),
+                service: service,
+                name: name,
+                phone: phone,
                 date: selectedDate.toLocaleDateString(),
-                time: selectedTime
+                time: selectedTime,
+                notes: notes || 'Nenhuma observação'
             };
+
+            try {
+                // Mostrar mensagem de carregamento
+                const submitButton = bookingForm.querySelector('button[type="submit"]');
+                const originalText = submitButton.textContent;
+                submitButton.textContent = 'Processando...';
+                submitButton.disabled = true;
+
+                // Enviar formulário via FormSubmit
+                await fetch(bookingForm.action, {
+                    method: 'POST',
+                    body: new FormData(bookingForm)
+                });
+
+                // Preparar mensagem do WhatsApp
+                const message = formatWhatsAppMessage(bookingData);
+                const phoneNumber = '5511973119019';
+                const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
+
+                // Restaurar botão
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+
+                // Mostrar mensagem de sucesso e redirecionar
+                alert('Agendamento realizado com sucesso! Você será conectado ao WhatsApp para confirmar os detalhes.');
+                window.open(whatsappURL, '_blank');
+
+            } catch (error) {
+                console.error('Erro ao processar agendamento:', error);
+                alert('Ocorreu um erro ao processar seu agendamento. Por favor, tente novamente.');
+                
+                // Restaurar botão em caso de erro
+                const submitButton = bookingForm.querySelector('button[type="submit"]');
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }
+        });
+    }
+});
+
+// Carrossel de Vídeos
+document.addEventListener('DOMContentLoaded', function() {
+    const track = document.querySelector('.carousel-track');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const prevButton = document.querySelector('.carousel-button.prev');
+    const nextButton = document.querySelector('.carousel-button.next');
+    const dotsContainer = document.querySelector('.carousel-dots');
+    
+    let currentIndex = 0;
+    const slideWidth = 100; // Porcentagem
+
+    // Criar dots
+    slides.forEach((_, index) => {
+        const dot = document.createElement('div');
+        dot.classList.add('carousel-dot');
+        if (index === 0) dot.classList.add('active');
+        dot.addEventListener('click', () => goToSlide(index));
+        dotsContainer.appendChild(dot);
+    });
+
+    const dots = document.querySelectorAll('.carousel-dot');
+
+    // Atualizar dots
+    function updateDots() {
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    }
+
+    // Ir para slide específico
+    function goToSlide(index) {
+        currentIndex = index;
+        track.style.transform = `translateX(-${index * slideWidth}%)`;
+        updateDots();
+    }
+
+    // Event listeners para os botões
+    prevButton.addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        goToSlide(currentIndex);
+    });
+
+    nextButton.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        goToSlide(currentIndex);
+    });
+
+    // Autoplay
+    let autoplayInterval = setInterval(() => {
+        currentIndex = (currentIndex + 1) % slides.length;
+        goToSlide(currentIndex);
+    }, 5000);
+
+    // Pausar autoplay quando o mouse estiver sobre o carrossel
+    const carousel = document.querySelector('.carousel-container');
+    carousel.addEventListener('mouseenter', () => {
+        clearInterval(autoplayInterval);
+    });
+
+    carousel.addEventListener('mouseleave', () => {
+        autoplayInterval = setInterval(() => {
+            currentIndex = (currentIndex + 1) % slides.length;
+            goToSlide(currentIndex);
+        }, 5000);
+    });
+
+    // Swipe support para dispositivos móveis
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    carousel.addEventListener('touchstart', e => {
+        touchStartX = e.changedTouches[0].screenX;
+    });
+
+    carousel.addEventListener('touchend', e => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    });
+
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                // Swipe para esquerda
+                currentIndex = (currentIndex + 1) % slides.length;
+            } else {
+                // Swipe para direita
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+            }
+            goToSlide(currentIndex);
+        }
+    }
+});
+
+// Função para formatar o número de telefone
+function formatPhoneNumber(phone) {
+    const cleaned = phone.replace(/\D/g, '');
+    const match = cleaned.match(/^(\d{2})(\d{5})(\d{4})$/);
+    if (match) {
+        return `(${match[1]}) ${match[2]}-${match[3]}`;
+    }
+    return phone;
+}
+
+// Função para formatar data
+function formatDate(date) {
+    const [day, month, year] = date.split('/');
+    const weekDays = ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado'];
+    const dateObj = new Date(year, month - 1, day);
+    const weekDay = weekDays[dateObj.getDay()];
+    return `${weekDay}, ${day}/${month}/${year}`;
+}
+
+// Função para formatar preço
+function formatPrice(service) {
+    const prices = {
+        'Design de Sobrancelhas': 'R$ 50,00',
+        'Peeling Facial': 'R$ 80,00',
+        'Massagem Rejuvenescedora': 'R$ 100,00'
+    };
+    return prices[service] || '';
+}
+
+// Função para formatar a mensagem do WhatsApp
+function formatWhatsAppMessage(formData) {
+    const formattedDate = formatDate(formData.date);
+    const formattedPhone = formatPhoneNumber(formData.phone);
+    
+    return encodeURIComponent(`
+✨ *NOVO AGENDAMENTO - STUDIO GABY XAVIER* ✨
+
+📅 *Data:* ${formattedDate}
+⏰ *Horário:* ${formData.time}
+💆‍♀️ *Serviço:* ${formData.service}
+💰 *Valor:* ${formatPrice(formData.service)}
+
+👤 *DADOS DO CLIENTE:*
+📋 Nome: ${formData.name}
+📱 Telefone: ${formattedPhone}
+${formData.notes ? `\n📝 *OBSERVAÇÕES:*\n${formData.notes}` : ''}
+
+-------------------
+Aguardando sua confirmação!
+`);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    const bookingForm = document.querySelector('.booking-form');
+    const phoneInput = document.getElementById('phone');
+    
+    // Máscara para o telefone
+    if (phoneInput) {
+        phoneInput.addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length <= 11) {
+                value = value.replace(/^(\d{2})(\d{5})(\d{4}).*/, '($1) $2-$3');
+            }
+            e.target.value = value;
+        });
+    }
+    
+    if (bookingForm) {
+        bookingForm.addEventListener('submit', async function(e) {
+            e.preventDefault();
             
-            console.log('Dados do agendamento:', bookingData);
+            // Validações
+            const name = document.getElementById('name').value.trim();
+            const phone = document.getElementById('phone').value.trim();
+            const service = document.getElementById('service').value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
             
-            alert('Agendamento realizado com sucesso! Entraremos em contato para confirmar.');
-            bookingModal.classList.remove('active');
-            setTimeout(() => {
-                bookingModal.style.display = 'none';
-            }, 300);
-            bookingForm.classList.remove('active');
-            setTimeout(() => {
-                bookingForm.style.display = 'none';
-            }, 300);
-            bookingForm.reset();
+            if (name.length < 3) {
+                alert('Por favor, insira seu nome completo');
+                return;
+            }
+            
+            if (!phone.match(/^\(\d{2}\) \d{5}-\d{4}$/)) {
+                alert('Por favor, insira um número de telefone válido');
+                return;
+            }
+            
+            if (!service || !date || !time) {
+                alert('Por favor, preencha todos os campos obrigatórios');
+                return;
+            }
+
+            const formData = {
+                name,
+                phone,
+                service,
+                date,
+                time,
+                notes: document.getElementById('notes').value.trim()
+            };
+
+            try {
+                // Mostrar mensagem de carregamento
+                const submitButton = bookingForm.querySelector('button[type="submit"]');
+                const originalText = submitButton.textContent;
+                submitButton.textContent = 'Processando...';
+                submitButton.disabled = true;
+
+                // Enviar formulário via FormSubmit
+                await fetch(bookingForm.action, {
+                    method: 'POST',
+                    body: new FormData(bookingForm)
+                });
+
+                // Preparar mensagem do WhatsApp
+                const message = formatWhatsAppMessage(formData);
+                const phoneNumber = '5511973119019';
+                const whatsappURL = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${message}`;
+
+                // Restaurar botão
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+
+                // Mostrar mensagem de sucesso e redirecionar
+                alert('Agendamento realizado com sucesso! Você será conectado ao WhatsApp para confirmar os detalhes.');
+                window.open(whatsappURL, '_blank');
+
+            } catch (error) {
+                console.error('Erro ao processar agendamento:', error);
+                alert('Ocorreu um erro ao processar seu agendamento. Por favor, tente novamente.');
+                
+                // Restaurar botão em caso de erro
+                const submitButton = bookingForm.querySelector('button[type="submit"]');
+                submitButton.textContent = originalText;
+                submitButton.disabled = false;
+            }
         });
     }
 }); 
