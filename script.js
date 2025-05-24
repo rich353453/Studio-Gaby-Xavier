@@ -140,14 +140,26 @@ document.addEventListener('DOMContentLoaded', function() {
 
         element.classList.add('selected');
         selectedTime = time;
+        
         // Atualizar campo de horário
         const timeInput = document.querySelector('#time');
         if (timeInput) {
             timeInput.value = time;
         }
+        
+        // Mostrar formulário
         if (bookingForm) {
-            bookingForm.style.display = 'flex';
-            bookingForm.classList.add('active');
+            // Remover qualquer formulário ativo anterior
+            const activeForm = document.querySelector('.booking-form.active');
+            if (activeForm) {
+                activeForm.classList.remove('active');
+            }
+            
+            // Mostrar o formulário atual
+            bookingForm.style.display = 'block';
+            requestAnimationFrame(() => {
+                bookingForm.classList.add('active');
+            });
         }
     }
 
@@ -168,6 +180,13 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 
                 if (bookingModal) {
+                    // Resetar o estado do formulário
+                    if (bookingForm) {
+                        bookingForm.reset();
+                        bookingForm.style.display = 'none';
+                        bookingForm.classList.remove('active');
+                    }
+                    
                     bookingModal.style.display = 'flex';
                     bookingModal.classList.add('active');
                     renderCalendar();
@@ -185,10 +204,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 bookingModal.classList.remove('active');
                 setTimeout(() => {
                     bookingModal.style.display = 'none';
+                    // Resetar seleções
+                    const selectedDay = document.querySelector('.calendar-day.selected');
+                    if (selectedDay) {
+                        selectedDay.classList.remove('selected');
+                    }
+                    const selectedTimeSlot = document.querySelector('.time-slot.selected');
+                    if (selectedTimeSlot) {
+                        selectedTimeSlot.classList.remove('selected');
+                    }
+                    selectedDate = null;
+                    selectedTime = null;
                 }, 300);
             }
             if (bookingForm) {
                 bookingForm.classList.remove('active');
+                bookingForm.reset();
                 setTimeout(() => {
                     bookingForm.style.display = 'none';
                 }, 300);
@@ -274,12 +305,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitButton.textContent = 'Processando...';
                 submitButton.disabled = true;
 
-                // Enviar formulário via FormSubmit
-                await fetch(bookingForm.action, {
-                    method: 'POST',
-                    body: new FormData(bookingForm)
-                });
-
                 // Preparar mensagem do WhatsApp
                 const message = formatWhatsAppMessage(bookingData);
                 const phoneNumber = '5511973119019';
@@ -289,9 +314,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitButton.textContent = originalText;
                 submitButton.disabled = false;
 
-                // Mostrar mensagem de sucesso e redirecionar
-                alert('Agendamento realizado com sucesso! Você será conectado ao WhatsApp para confirmar os detalhes.');
+                // Redirecionar para o WhatsApp
                 window.open(whatsappURL, '_blank');
+
+                // Fechar o modal após o redirecionamento
+                if (bookingModal) {
+                    bookingModal.classList.remove('active');
+                    setTimeout(() => {
+                        bookingModal.style.display = 'none';
+                        // Resetar formulário
+                        bookingForm.reset();
+                        // Limpar seleções
+                        const selectedDay = document.querySelector('.calendar-day.selected');
+                        if (selectedDay) {
+                            selectedDay.classList.remove('selected');
+                        }
+                        const selectedTimeSlot = document.querySelector('.time-slot.selected');
+                        if (selectedTimeSlot) {
+                            selectedTimeSlot.classList.remove('selected');
+                        }
+                        selectedDate = null;
+                        selectedTime = null;
+                    }, 300);
+                }
 
             } catch (error) {
                 console.error('Erro ao processar agendamento:', error);
@@ -511,11 +556,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitButton.textContent = 'Processando...';
                 submitButton.disabled = true;
 
-                // Enviar formulário via FormSubmit
-                await fetch(bookingForm.action, {
-                    method: 'POST',
-                    body: new FormData(bookingForm)
-                });
+                // Enviar email usando EmailJS
+                await emailjs.send(
+                    "SEU_SERVICE_ID", // Substitua pelo seu Service ID
+                    "SEU_TEMPLATE_ID", // Substitua pelo seu Template ID
+                    {
+                        to_email: "richardsuportelukos@gmail.com",
+                        from_name: name,
+                        service: service,
+                        date: date,
+                        time: time,
+                        phone: phone,
+                        notes: formData.notes,
+                        price: formatPrice(service)
+                    }
+                );
 
                 // Preparar mensagem do WhatsApp
                 const message = formatWhatsAppMessage(formData);
@@ -541,4 +596,165 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+});
+
+// Animações no scroll
+document.addEventListener('DOMContentLoaded', function() {
+    const animatedElements = document.querySelectorAll('.servico-card, .info-item, .stat-item');
+    
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, {
+        threshold: 0.1
+    });
+
+    animatedElements.forEach(element => {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(50px)';
+        element.style.transition = 'all 0.6s ease-out';
+        observer.observe(element);
+    });
+
+    // Smooth scroll para links internos
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Parallax suave no hero
+    const hero = document.querySelector('.hero');
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        if (hero) {
+            hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
+        }
+    });
+
+    // Animação do menu ativo
+    const sections = document.querySelectorAll('section[id]');
+    window.addEventListener('scroll', () => {
+        const scrollY = window.pageYOffset;
+        
+        sections.forEach(section => {
+            const sectionHeight = section.offsetHeight;
+            const sectionTop = section.offsetTop - 100;
+            const sectionId = section.getAttribute('id');
+            const menuLink = document.querySelector(`.nav-links a[href="#${sectionId}"]`);
+            
+            if (menuLink && scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                menuLink.classList.add('active');
+            } else if (menuLink) {
+                menuLink.classList.remove('active');
+            }
+        });
+    });
+});
+
+// Controle de scroll da navegação
+document.addEventListener('DOMContentLoaded', function() {
+    const navbar = document.querySelector('.navbar');
+    const navLinks = document.querySelectorAll('.nav-links a');
+    const sections = document.querySelectorAll('section[id]');
+
+    // Função para atualizar a navegação no scroll
+    function updateNavigation() {
+        const scrollY = window.pageYOffset;
+
+        // Adiciona classe scrolled na navbar quando rolar a página
+        if (scrollY > 50) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+
+        // Atualiza o link ativo baseado na seção visível
+        sections.forEach(section => {
+            const sectionHeight = section.offsetHeight;
+            const sectionTop = section.offsetTop - 100;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === `#${sectionId}`) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+        });
+    }
+
+    // Adiciona o evento de scroll
+    window.addEventListener('scroll', updateNavigation);
+
+    // Smooth scroll para links internos
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            if (this.getAttribute('href').startsWith('#') && !this.hasAttribute('data-booking')) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            }
+        });
+    });
+});
+
+// Navbar scroll behavior
+window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+    } else {
+        navbar.classList.remove('scrolled');
+    }
+});
+
+// Smooth scroll for navigation links
+document.addEventListener('DOMContentLoaded', function() {
+    const navLinks = document.querySelectorAll('.nav-links a');
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            
+            if (targetSection) {
+                const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                const targetPosition = targetSection.offsetTop - navbarHeight;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            } else if (this.getAttribute('href') === '#') {
+                // Scroll to top for home link
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
 }); 

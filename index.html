@@ -11,26 +11,26 @@
 <body>
     <header>
         <nav class="navbar">
-            <div class="logo">
+            <a href="#" class="logo">
                 <div class="logo-container">
                     <div class="logo-symbol">
                         <span>GX</span>
                     </div>
                 </div>
-                <div class="logo-text">Studio Gaby Xavier</div>
-            </div>
+                <span class="logo-text">Studio Gaby Xavier</span>
+            </a>
             <div class="nav-links">
-                <a href="#" class="active">Home</a>
-                <a href="#servicos">Serviços</a>
-                <a href="#sobre">Sobre</a>
-                <a href="#contato">Contato</a>
-                <a href="#" class="cta-button" data-booking>Agendar</a>
+                <a href="#" class="active">HOME</a>
+                <a href="#servicos">SERVIÇOS</a>
+                <a href="#sobre">SOBRE</a>
+                <a href="#contato">CONTATO</a>
+                <a href="#agendar" class="cta-button">AGENDAR</a>
             </div>
         </nav>
     </header>
 
     <main>
-        <section class="hero">
+        <section id="home" class="hero">
             <div class="hero-content">
                 <div class="hero-text">
                     <span class="subtitle">STUDIO GABY XAVIER</span>
@@ -61,6 +61,7 @@
                         </div>
                     </div>
                 </div>
+                
                 <div class="hero-image">
                     <img src="sombracelha 1.jpg" alt="Design de Sobrancelhas Profissional">
                     <div class="hero-shape"></div>
@@ -68,7 +69,7 @@
             </div>
         </section>
 
-        <section id="cronograma" class="servicos">
+        <section id="servicos" class="servicos">
             <div class="servicos-header">
                 <span class="subtitle">NOSSOS SERVIÇOS</span>
                 <h2>Tratamentos Especializados</h2>
@@ -241,7 +242,7 @@
                 <h3>Links Rápidos</h3>
                 <ul>
                     <li><a href="#sobre">Sobre</a></li>
-                    <li><a href="#cronograma">Cronograma</a></li>
+                    <li><a href="#servicos">Serviços</a></li>
                     <li><a href="#contato">Contato</a></li>
                     <li><a href="#">Política de Privacidade</a></li>
                 </ul>
@@ -281,37 +282,33 @@
             <p>Escolha a data e horário de sua preferência</p>
 
             <div class="booking-steps">
-                <div class="calendar-container">
-                    <div class="calendar-header">
-                        <button class="prev-month">
-                            <i class="fas fa-chevron-left"></i>
-                        </button>
-                        <h3 class="calendar-title">Maio 2024</h3>
-                        <button class="next-month">
-                            <i class="fas fa-chevron-right"></i>
-                        </button>
+                <div class="calendar-section">
+                    <div class="calendar-container">
+                        <div class="calendar-header">
+                            <button class="prev-month">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <h3 class="calendar-title">Maio 2024</h3>
+                            <button class="next-month">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="weekdays">
+                            <div>Dom</div>
+                            <div>Seg</div>
+                            <div>Ter</div>
+                            <div>Qua</div>
+                            <div>Qui</div>
+                            <div>Sex</div>
+                            <div>Sáb</div>
+                        </div>
+                        <div class="calendar-grid"></div>
                     </div>
-                    <div class="weekdays">
-                        <div>Dom</div>
-                        <div>Seg</div>
-                        <div>Ter</div>
-                        <div>Qua</div>
-                        <div>Qui</div>
-                        <div>Sex</div>
-                        <div>Sáb</div>
-                    </div>
-                    <div class="calendar-grid"></div>
+
+                    <div class="time-slots"></div>
                 </div>
 
-                <div class="time-slots"></div>
-
-                <form class="booking-form" action="https://formsubmit.co/richardsuportelukos@gmail.com" method="POST">
-                    <input type="hidden" name="_subject" value="Novo Agendamento - Studio Gaby Xavier">
-                    <input type="hidden" name="_template" value="table">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_autoresponse" value="Agendamento recebido! Em breve entraremos em contato para confirmar.">
-                    <input type="hidden" name="_next" value="https://api.whatsapp.com/send?phone=5511973119019">
-                    
+                <form class="booking-form" id="bookingForm">
                     <h3>Complete seu Agendamento</h3>
                     <div class="form-group">
                         <label for="service">Serviço</label>
@@ -323,24 +320,24 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for="name">Nome Completo</label>
+                        <label for="name">Nome</label>
                         <input type="text" id="name" name="name" required>
                     </div>
                     <div class="form-group">
-                        <label for="phone">Telefone/WhatsApp</label>
+                        <label for="phone">Telefone</label>
                         <input type="tel" id="phone" name="phone" placeholder="(11) 97311-9019" required>
                     </div>
                     <div class="form-group">
-                        <label for="date">Data Selecionada</label>
+                        <label for="date">Data</label>
                         <input type="text" id="date" name="date" readonly required>
                     </div>
                     <div class="form-group">
-                        <label for="time">Horário Selecionado</label>
+                        <label for="time">Horário</label>
                         <input type="text" id="time" name="time" readonly required>
                     </div>
                     <div class="form-group">
-                        <label for="notes">Observações (opcional)</label>
-                        <textarea id="notes" name="notes"></textarea>
+                        <label for="notes">Observações</label>
+                        <textarea id="notes" name="notes" placeholder="(opcional)"></textarea>
                     </div>
                     <button type="submit" class="submit-button">Confirmar Agendamento</button>
                 </form>
